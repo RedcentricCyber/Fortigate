@@ -15,7 +15,7 @@ ONLY if the SSL VPN service (web-mode or tunnel-mode) is enabled
 ```
 ![Tool in action](https://i.imgur.com/DpKKzsH.png)
 
-Usage: 
+## Usage: 
 
 Install Requirements: `pip3 install -r requirements.txt`, then use as below.
 ```
