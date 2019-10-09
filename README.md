@@ -14,8 +14,6 @@ FortiOS 6.0.0 to 6.0.4
 ONLY if the SSL VPN service (web-mode or tunnel-mode) is enabled
 ```
 
-![Tool in action](https://i.imgur.com/TnG84n2.png)
-
 Usage: 
 
 Install Requirements: `pip3 install -r requirements.txt`, then use as below.
@@ -39,3 +37,4 @@ optional arguments:
                         File to output discovered credentials too
 ```
 
+![Tool in action](https://i.imgur.com/TnG84n2.png)
