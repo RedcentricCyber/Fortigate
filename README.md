@@ -13,6 +13,7 @@ FortiOS 5.6.3 to 5.6.7
 FortiOS 6.0.0 to 6.0.4
 ONLY if the SSL VPN service (web-mode or tunnel-mode) is enabled
 ```
+![Tool in action](https://i.imgur.com/DpKKzsH.png)
 
 Usage: 
 
@@ -36,5 +37,3 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
                         File to output discovered credentials too
 ```
-
-![Tool in action](https://i.imgur.com/TnG84n2.png)
