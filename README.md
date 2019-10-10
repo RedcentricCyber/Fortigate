@@ -13,7 +13,7 @@ FortiOS 5.6.3 to 5.6.7
 FortiOS 6.0.0 to 6.0.4
 ONLY if the SSL VPN service (web-mode or tunnel-mode) is enabled
 ```
-Note that whilst this tool was originally multi-threaded/multi-targeted we felt it was a little overpowered so had to turn it down a little (although feel free to add those back in or get in touch if you have a genuine need for it), we may release that version publically at a later date.
+Note that whilst this tool was originally multi-threaded/multi-targeted we felt it was a little overpowered so had to turn it down a little (although feel free to add those features back in or get in touch if you have a genuine need for it), we may release that version publically at a later date.
 
 ![Tool in action](https://i.imgur.com/DpKKzsH.png)
 
