@@ -157,7 +157,9 @@ INPUT = args.input
 OUTPUTFILE = args.output
 PRINTABLE = set(bytes(string.printable, 'ascii'))
 RESULTS = []
-NOSSL = ssl.SSLContext()
+NOSSL = ssl.create_default_context()
+NOSSL.check_hostname = False
+NOSSL.verify_mode = ssl.CERT_NONE
 LOOKFOR = bytearray([0x5d,0x01])
 LOOKFORTWO = bytearray([0x5c,0x01])
 
