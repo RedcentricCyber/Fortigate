@@ -190,7 +190,7 @@ parser.add_argument('-i', '--input', default='targets.txt', help='Line seperated
 parser.add_argument('-o', '--output', default='creds.txt', help='File to output discovered credentials too')
 parser.add_argument('-t', '--threads', default=200, help='threads')
 #Credit to SardinasA for the below credscan idea/code
-parser.add_argument('-c', '--credscan', default='n', help='Execute Credential Pull y/n With great power comes great')
+parser.add_argument('-c', '--credscan', default='n', help='Execute Credential Pull y/n With great power comes great (defaults to "n")')
 args = parser.parse_args()
 
 # Setup varibles

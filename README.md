@@ -15,6 +15,7 @@ ONLY if the SSL VPN service (web-mode or tunnel-mode) is enabled
 ```
 
 Video of tool in action
+
 [![Tool in action](https://img.youtube.com/vi/xxoFAH1pZ_I/0.jpg)](https://www.youtube.com/watch?v=xxoFAH1pZ_I)
 
 ## Notes:
