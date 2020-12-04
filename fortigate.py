@@ -220,4 +220,4 @@ if __name__ == '__main__':
 	pool = Pool(processes=MAXPROCESSES)
 	pool.map(exploit, targets)
 
-	print('[*] Finished! check summary.txt and '+str(OUTPUTFILE)+' for results')
+	print('[*] Finished! check summary.txt and '+str(OUTPUTFILE)+' (if -c was set to Y) for results')
