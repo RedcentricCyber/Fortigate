@@ -81,7 +81,7 @@ def parse(target, process, subjectCN):
 		else:
 			comp.append(byte)
 			comp = comp[-2:]
-		if comp == LOOKFOR or comp == LOOKFORTWO:
+		if comp == LOOKFOR or comp == LOOKFORTWO or comp == LOOKFORTHREE:
 			grabuser(target, process, counter, subjectCN)
 			foundcount = foundcount + 1
 		counter= counter + 1
@@ -196,6 +196,8 @@ NOSSL.check_hostname = False
 NOSSL.verify_mode = ssl.CERT_NONE
 LOOKFOR = bytearray([0x5d,0x01])
 LOOKFORTWO = bytearray([0x5c,0x01])
+# Below lookup value taken from gallypette's fork https://github.com/gallypette/Fortigate
+LOOKFORTHREE = bytearray([0x5f, 0x01])
 
 if __name__ == '__main__':
 	print("""  ___ ___  ___ _____ ___ ___   _ _____ ___ 
