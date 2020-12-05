@@ -17,7 +17,7 @@
 # CVE : CVE-2018-133
 # Found By: Orange Tsai - https://blog.orange.tw/2019/08/attacking-ssl-vpn-part-2-breaking-the-fortigate-ssl-vpn.html
 # Exploit Script by: John M (@x41x41x41), David S (@DavidStubley)
-# Modified/built upon by: colossus700, SoarinFerret, SardinasA
+# Modified/built upon by: colossus700, SoarinFerret, SardinasA, gallypette
 
 import argparse, urllib.request, ssl, csv, string, socket, re
 from multiprocessing import Process, Manager, Pool
