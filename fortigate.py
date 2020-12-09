@@ -98,7 +98,6 @@ def getSubjectCN(url):
     try:
         if ':' in url:
             urlsplit = url.split(':')
-            print(urlsplit)
             dst = (urlsplit[0],int(urlsplit[1]))
         else:
             dst = (url,443)
