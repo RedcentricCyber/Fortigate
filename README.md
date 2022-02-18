@@ -49,6 +49,30 @@ optional arguments:
 ```
 Note to pull credentials `-c y` must be used.
 
+## Using with a proxy
+
+It is often helpful to run this tool through a proxy. Burp being the most
+obvious example. You can configure burp to use an upstream socks proxy which you
+can create with the `-D` flag in SSH. 
+
+For example, to make requests come from a jump box example.com, create the socks
+proxy 
+
+```bash
+ssh -D 8081 user@example.com
+```
+
+Configure burp (Project or user settings) to use that proxy. Host: 127.0.0.1
+port 8081.
+
+This tool (or rather the requests library it uses) will honour the *_proxy
+environment variables. Set these to burp:
+
+```bash
+export http_proxy="http://127.0.0.1:8080" https_proxy="http://127.0.0.1:8080"
+```
+
+
 ## License / Terms of Use
 This software should only be used for authorised testing activity and not for malicious use.
 
