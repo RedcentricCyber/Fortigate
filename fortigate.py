@@ -45,7 +45,7 @@ def exploit(target):
 				CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 				CSV_WRITER.writerow([str(target), 'No Need', 'Not vulnerable'])
 	except urllib.error.HTTPError as e:
-		print('[!] '+str(target)+' does not appear to be vulnerable ('+str(e.code)+', +'+str(e.reason)+')')
+		print('[!] '+str(target)+' does not appear to be vulnerable ('+str(e.code)+', '+str(e.reason)+')')
 		with open('summary.txt', mode='a') as csvfile:
 			CSV_WRITER = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 			CSV_WRITER.writerow([str(target), 'No Need', 'Not vulnerable ('+str(e.code)+')'])
